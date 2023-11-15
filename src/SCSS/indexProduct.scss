@@ -1,0 +1,52 @@
+.container-product-main {
+    display: flex;
+    flex-wrap: wrap;
+    .product-items {
+        flex: 1;
+        height: 250px;
+        min-width: 200px;
+        max-width: 200px;
+
+        .product-item-group {
+            border: #e5e7eb solid 1px;
+            
+            .product-img {
+                flex: 1;
+               
+            }
+            .product-description {
+                .product-name {
+                    font-size: 14px;
+                    overflow-wrap: break-word;
+                    overflow: hidden;
+                }
+                .product-discount span{
+                    font-size: 10px;
+                    background-color: #f69113;
+                    color: #fff;
+                }
+                .product-price {
+                    .price {
+                        font-size: 16px;
+                        color: #ee4d2d;
+
+                        span {
+                            font-size: 12px;
+                        }
+                    }
+                    .number-sold {
+                        font-size: 12px;
+                        color: #757575;
+                    }
+                }
+            }  
+        }
+        .container-product-hover {
+            .button {
+                font-size: 12px;
+                padding: 4px 8px;
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,27 @@
+.box-logo-brand {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    margin: auto auto;
+    .logo-img {
+        width: 100%;
+        height: auto;
+    }
+}
+.brand-name {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.brand-description {
+    margin-bottom: 0;
+    font-size: 12px;
+}
+
+.create-brand {
+    margin: 0 auto;
+    .logo-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 10px;
+    }
+}

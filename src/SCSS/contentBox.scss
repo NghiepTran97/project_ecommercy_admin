@@ -1,0 +1,32 @@
+.content {
+    padding: 0 8px;
+    background-color: #f4f6f9;
+
+    .content-box {
+        padding: 0 7.5px;
+        .box {
+            border-radius: 5px;
+            
+            position: relative;
+            .box-icon {
+                color: rgba(0,0,0,.15);
+                font-size: 70px;
+                position: absolute;
+                top: 20px;
+                right: 15px;
+            }
+            .box-content {
+                padding: 10px;
+            }
+            .box-footer{
+                background-color: rgba(0,0,0,.1);
+                padding: 3px 0;
+                color: #fff;
+                .box-more {
+                    padding-right: 3px;
+                }
+            }
+            
+        }
+    }
+}

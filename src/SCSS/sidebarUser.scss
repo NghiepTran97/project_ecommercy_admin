@@ -1,0 +1,35 @@
+.nav-icon {
+     height: 20px;
+    width: auto;
+} 
+
+.menu-open {
+    >.nav-treeview {
+      display: block;
+      -webkit-animation-name: trans;
+      -webkit-animation-duration: 0.75s;
+      animation-name: trans;
+      animation-duration: 0.75s;
+    }
+}
+.nav-treeview {
+    display: none;
+    list-style: none;
+    padding-left: 0;
+
+    .nav-item {
+        
+        .nav {
+            background-color: #fff;
+            color: #343a40;
+            text-decoration: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+        }
+
+        .nav-link {
+            padding: 0;
+        }
+    }
+
+}
