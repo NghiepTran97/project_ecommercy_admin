@@ -4,7 +4,7 @@ const baseRoute = 'admin/profile/'
 
 const profileApi = {
     show: () => {
-        return adminAxios.get(baseRoute + 'show', {
+        return adminAxios.get(baseRoute, {
             headers: getHeaderWithAuthorizationBearerToken()
         });
     },

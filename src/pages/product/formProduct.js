@@ -36,14 +36,17 @@ export default function ProductFormElement () {
         formData.append('name', data.name);
         formData.append('category', data.category)
         formData.append('brand', data.brand)
-        formData.append('description', data.category.description)
+        formData.append('description', data.description)
 
-        if (data.productMedia) {
-            formData.append('imageProduct', data.productMedia[0])
-            formData.append('videoProduct', data.productMedia[0])
+        if (data.images) {
+            formData.append('images', data.images[0])
+        }
+        if (data.video) {
+            formData.append('video', data.video[0])
         }
 
         const productsResponse = await productApi.store(formData);
+        console.log(productsResponse.data);
 
         if (productsResponse.sucess) {
             navigate('/admin/product')
@@ -69,7 +72,7 @@ export default function ProductFormElement () {
                         <input
                             type="file"
                             className="form-control"
-                            {...register('imageProduct', {
+                            {...register('images', {
                                 onChange: (e) => changeImageProduct(e)
                             })}
                         />
@@ -84,7 +87,7 @@ export default function ProductFormElement () {
                     <input
                         type="file"
                         className="form-control"
-                        {...register('videoProduct', {
+                        {...register('video', {
                             onChange: (e) => changeVideoProduct(e)
                         })}
                     />

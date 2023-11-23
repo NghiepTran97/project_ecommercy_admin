@@ -1,7 +1,7 @@
 import adminAxios from "../plugins/axios";
 import { getHeaderWithAuthorizationBearerToken } from "../helpers/common";
 import { PAGINATION } from "../helpers/constants";
-const baseRoute = 'users/'
+const baseRoute = 'admin/users/'
 
 
 const userApis = {

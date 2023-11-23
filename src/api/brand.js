@@ -1,7 +1,7 @@
 import adminAxios from "../plugins/axios";
 import { getHeaderWithAuthorizationBearerToken } from "../helpers/common";
 import { PAGINATION } from "../helpers/constants";
-const baseRoute = 'brand/';
+const baseRoute = 'admin/brand/';
 
 const brandApis = {
     index: (params = {}, page = PAGINATION.startPage, limit = PAGINATION.limit) => {
