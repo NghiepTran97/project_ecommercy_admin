@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import profileApi from "../../api/profile";
-import { useNavigate} from "react-router-dom";
+import authApi from "../../api/auth";
+import { useNavigate, useSearchParams} from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 export default function ChangePassword() {
@@ -9,18 +10,19 @@ export default function ChangePassword() {
         register,
         handleSubmit,
         formState: {errors},
-        setError,
         watch,
     } = useForm();
     let navigate = useNavigate();
-
+    const [searchParams] = useSearchParams();
     const changePassword = async (data) => {
-        const changePasswordRequest = await profileApi.changePassword({
+        const changePasswordRequest = await authApi.changePassword({
+            token: searchParams.get('userToken'),
             password: data.password
         });
+        console.log(searchParams.get('userToken'));
         if(changePasswordRequest.success) {
             toast.success(() => <p>Thay đổi mật khẩu thành công!</p>);
-            navigate('/login');
+            navigate('/admin/auth/login');
 
             return;
         }
@@ -29,8 +31,6 @@ export default function ChangePassword() {
             toast.error(() => <p>Có lỗi xảy ra, vui lòng thử lại</p>);
         }
     }
-
-
     return (
         <>
             <div className={'container-fluid row login-page justify-content-center align-items-center'}>

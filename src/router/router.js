@@ -16,6 +16,7 @@ import BrandIndex from "../pages/brands/indexBrand";
 import BrandCreate from "../pages/brands/createBrand";
 import BrandUpdate from "../pages/brands/updateBrand";
 import ProductCreate from "../pages/product/createProduct";
+import ProductUpdate from "../pages/product/updateProduct";
 
 const router = createBrowserRouter([
     {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
                 element: <Index/>
             },
             {
-                path: "users",
+                path: "admin/users",
                 children: [
                     {
                         index: true,
@@ -70,12 +71,16 @@ const router = createBrowserRouter([
                     {
                         path: "create",
                         element: <ProductCreate/>
+                    },
+                    {
+                        path: ":productId",
+                        element: <ProductUpdate/>
                     }
 
                 ]
             },
             {
-                path: "category",
+                path: "admin/category",
                 children: [
                     {
                         index: true,
@@ -86,14 +91,14 @@ const router = createBrowserRouter([
                         element: <CategoryCreate/>
                     },
                     {
-                        path: ":categoryId/update",
+                        path: ":categoryId",
                         element: <CategoryUpdate/>
                     }
 
                 ]
             },
             {
-                path: "brand",
+                path: "admin/brand",
                 children: [
                     {
                         index: true,
@@ -104,7 +109,7 @@ const router = createBrowserRouter([
                         element: <BrandCreate/>
                     },
                     {
-                        path: ":brandId/update",
+                        path: ":brandId",
                         element: <BrandUpdate/>
                     }
                 ]
@@ -115,7 +120,7 @@ const router = createBrowserRouter([
         path: '/',
         children: [
             {
-                path: 'login',
+                path: 'admin/auth/login',
                 element: <Login/>
             }
         ]

@@ -23,7 +23,7 @@ export default function UserFormElement () {
         const userResponse = await userApis.store(data);
 
         if (userResponse.success) {
-            navigate("/users");
+            navigate("/admin/users");
             toast.success(() => <p>Thêm mới user <b>{userResponse.data.username}</b> thành công </p>);
             return;
         }

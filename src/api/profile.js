@@ -14,7 +14,7 @@ const profileApi = {
         });
     },
     changePassword: (data) => {
-        return adminAxios.put(baseRoute + 'change-password', data, {
+        return adminAxios.put(baseRoute + 'confirm-account/change-password', data, {
             headers: getHeaderWithAuthorizationBearerToken()
         });
     },

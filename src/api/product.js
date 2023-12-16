@@ -23,6 +23,16 @@ const productApi = {
         return adminAxios.post(baseRoute, data, {
             headers: getHeaderWithAuthorizationBearerToken()
         })
+    },
+    show: (productId) => {
+        return adminAxios.get(baseRoute + productId, {
+            headers: getHeaderWithAuthorizationBearerToken()
+        })
+    },
+    update: (productId, data) => {
+        return adminAxios.put(baseRoute + productId, data, {
+            headers: getHeaderWithAuthorizationBearerToken()
+        })
     }
 }
 

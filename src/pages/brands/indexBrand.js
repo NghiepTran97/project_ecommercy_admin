@@ -109,7 +109,6 @@ export default function BrandIndex () {
                                         <td className="text-center">
                                             <Link
                                                 className="btn btn-primary me-2"
-                                               
                                             >
                                                 Thêm mới sản phẩm
                                             </Link>
@@ -122,7 +121,7 @@ export default function BrandIndex () {
                                             >
                                                 Xóa
                                             </button>
-                                            <Link className="btn btn-success" to={brand._id + '/update'}>
+                                            <Link className="btn btn-success" to={brand._id}>
                                                 Chỉnh sửa
                                             </Link>
                                         </td>

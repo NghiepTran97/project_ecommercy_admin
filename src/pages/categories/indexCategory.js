@@ -104,7 +104,6 @@ export default function CategoryIndex() {
                                         <td className="text-center">
                                             <Link
                                                 className="btn btn-primary me-2"
-                                               
                                             >
                                                 Thêm sản phẩm
                                             </Link>
@@ -117,7 +116,7 @@ export default function CategoryIndex() {
                                             >
                                                 Xóa
                                             </button>
-                                            <Link className="btn btn-success" to={category._id + '/update'}>
+                                            <Link className="btn btn-success" to={category._id}>
                                                 Chỉnh sửa
                                             </Link>
                                         </td>

@@ -23,7 +23,7 @@ export default function SidebarMain() {
             <div className="container-sidebar col-2">
                 <div className="sidebar-admin">
                     <SiShopee className="sidebar-logo"/>
-                    <span className="sidebar-name">Shopee</span>
+                    <span className="sidebar-name">Shoper</span>
                 </div>
                 <div className="sidebar-content">
                     <Link to={'admin/profile'} className="sidebar-profile d-flex">
@@ -49,7 +49,7 @@ export default function SidebarMain() {
                             aria-controls="example-collapse-text"
                             aria-expanded={open}
                         >
-                            <p className="m-0 d-flex justify-content-between align-items-center">
+                            <div className="m-0 d-flex justify-content-between align-items-center">
                                 <div>
                                     <FaUsers className="nav-icon me-2"/> 
                                     Quản lý Users
@@ -57,13 +57,13 @@ export default function SidebarMain() {
                                 <div>
                                     <FaAngleDown/>
                                 </div>
-                            </p>
+                            </div>
                         </Button>
                         <Collapse in={open}>
                             <div id="example-collapse-text" className="mt-2">
                                 <div className="form-control">
                                     <NavLink
-                                        to = {'users'}
+                                        to = {'admin/users'}
                                         className={"nav-link"}
                                     >
                                         <div className="nav d-flex align-items-center">
@@ -93,7 +93,7 @@ export default function SidebarMain() {
                             aria-controls="example-collapse-text"
                             aria-expanded={open1}
                         >
-                            <p className="m-0 d-flex justify-content-between align-items-center">
+                            <div className="m-0 d-flex justify-content-between align-items-center">
                                 <div>
                                     <FaMailBulk className="nav-icon me-2"/> 
                                     Chatbox
@@ -101,7 +101,7 @@ export default function SidebarMain() {
                                 <div>
                                     <FaAngleDown/>
                                 </div>
-                            </p>
+                            </div>
                         </Button>
                         <Collapse in={open1}>
                             <div id="example-collapse-text" className="mt-2">
@@ -137,7 +137,7 @@ export default function SidebarMain() {
                             aria-controls="example-collapse-text"
                             aria-expanded={open2}
                         >
-                            <p className="m-0 d-flex justify-content-between align-items-center">
+                            <div className="m-0 d-flex justify-content-between align-items-center">
                                 <div>
                                     <GiClothes className="nav-icon me-2"/> 
                                     Product
@@ -145,7 +145,7 @@ export default function SidebarMain() {
                                 <div>
                                     <FaAngleDown/>
                                 </div>
-                            </p>
+                            </div>
                         </Button>
                         <Collapse in={open2}>
                             <div id="example-collapse-text" className="mt-2">
@@ -177,7 +177,7 @@ export default function SidebarMain() {
 
                     <div>
                         <Link className= 'sidebar-collapse mt-2 form-control btn btn-primary'
-                            to = {'/category'}
+                            to = {'admin/category'}
                         >
                             <div className="m-0 d-flex justify-content-between align-items-center">
                                 <div className="d-flex justify-content-between align-items-center">
@@ -193,7 +193,7 @@ export default function SidebarMain() {
 
                     <div>
                         <Link className= 'sidebar-collapse mt-2 form-control btn btn-primary'
-                            to = {'/brand'}
+                            to = {'admin/brand'}
                         >
                             <div className="m-0 d-flex justify-content-between align-items-center">
                                 <div className="d-flex justify-content-between align-items-center">
@@ -208,7 +208,6 @@ export default function SidebarMain() {
                     </div>
                 </div>
             </div>
-
         </>
     )
 }

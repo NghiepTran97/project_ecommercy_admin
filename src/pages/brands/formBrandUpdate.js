@@ -2,20 +2,15 @@ import {useForm} from "react-hook-form";
 import { useParams } from "react-router-dom";
 import {toast} from "react-toastify"
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import brandApis from "../../api/brand";
-import { updateAuthBrand } from "../../auth/authBrand";
 
 export default function BrandFormUpdate () {
-    //const dispatch = useDispatch();
-    //const authBrand = useSelector(state => state.authBrand);
     const [urlLogoBrand, setUrlLogoBrand] = useState();
     const {
         register,
         handleSubmit,
         formState: {errors},
         setValue,
-        setError
     } = useForm ();
     let urlParams = useParams();
 
@@ -31,30 +26,29 @@ export default function BrandFormUpdate () {
                 if(brandResponse.success) {
                     setValue('name', brandResponse.data.name)
                     setValue('description', brandResponse.data.description)
-                    setValue('logo', brandResponse.data.logo)
+                    setUrlLogoBrand('logo', brandResponse.data.logo)
                 }
             }
         )()
     },[])
     
     const update = async (data) => {
-        const brandResponse = await brandApis.update(urlParams.brandId, data);
+        const formData = new FormData();
+        formData.append('name', data.name);
+        formData.append('description', data.description);
+        if(data.logo) {
+            formData.append('logo', data.logo[0]);
+        }
 
+        const brandResponse = await brandApis.update(urlParams.brandId, formData);
         if(brandResponse.success) {
             toast.success(() => <p>Cập nhật brand <b>{data.name}</b> thành công</p>)
             return;
         }
         
-        if(!brandResponse.errors.length) {
+        if(brandResponse.error) {
             toast.error(() => <p>Cập nhật brand thất bại</p>)
         }
-        brandResponse.errors.forEach((error) => {
-            const [key, value] = Object.entries (error)[0];
-            setError(key , {
-                type: 'server',
-                message: value.message
-            })
-        });
     }
     return (
         <>

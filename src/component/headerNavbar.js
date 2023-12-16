@@ -11,7 +11,7 @@ export default function HeaderNavbar() {
     const logOut = () => {
         console.log('me');
         removeCookies('userToken');
-        window.location.href = process.env.REACT_APP_APP_DOMAIN + 'login'
+        window.location.href = process.env.REACT_APP_APP_DOMAIN + 'admin/auth/login'
     }
 
     return (

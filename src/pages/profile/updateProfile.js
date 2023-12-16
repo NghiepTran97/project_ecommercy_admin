@@ -43,11 +43,11 @@ export default function ProfileUpdate() {
 
         if (data.avatar) {
             formData.append('avatar', data.avatar[0]);
-            const avatarUrl = URL.createObjectURL(data.avatar[0]);
         }
         try {
             const updateProfileResponse = await profileApi.update(formData);
-
+            console.log(updateProfileResponse.data);
+      
             if (updateProfileResponse.success) {
                 dispatch(updateAuthUser(updateProfileResponse.data))
 
@@ -73,7 +73,7 @@ export default function ProfileUpdate() {
                         <div className={'col-12'}>
                             <div className="card mb-3">
                                 <div className="card-header text-white bg-success">
-                                    <h3 className="card-title">title</h3>
+                                    <h3 className="card-title">Update Profile</h3>
                                 </div>
                                 <form onSubmit={handleSubmit(update)}>
                                     <div className={'p-3 col-6'}>

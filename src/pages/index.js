@@ -77,7 +77,6 @@ export default function Index() {
                             </div>
                             <BiSolidPieChartAlt2 className="box-icon"/>
                         </div>
-                        
                     </div>
                 </div>
             </div>

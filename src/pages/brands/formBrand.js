@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-toastify";
-import { useSelector, useDispatch } from "react-redux";
-import { updateAuthBrand } from "../../auth/authBrand";
 import { useState } from "react";
 import brandApis from "../../api/brand";
 import { useForm } from "react-hook-form";
@@ -30,15 +28,13 @@ export default function BrandFormElement () {
         const formData = new FormData();
         formData.append('name', data.name);
         formData.append('description', data.description);
-        
         if(data.logo) {
             formData.append('logo', data.logo[0]);
         }
-       
         const brandResponse = await brandApis.store(formData);
 
         if(brandResponse.success) {
-            navigate('/brand')
+            navigate('/admin/brand')
             toast.success(() => <p>Thêm mới brand <b>{brandResponse.data.name}</b> thành công</p>)
         
             return;

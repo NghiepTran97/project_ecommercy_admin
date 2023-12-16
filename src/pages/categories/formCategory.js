@@ -2,10 +2,10 @@ import {useForm} from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import categoryApis from "../../api/category";
 import {toast} from "react-toastify"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function CategoryFormElement ({isUpdate = false}) {
-
+    const [urlImageCategory, setUrlImageCategory] = useState();
     const {
         register,
         handleSubmit,
@@ -19,6 +19,10 @@ export default function CategoryFormElement ({isUpdate = false}) {
     });
     let navigate = useNavigate();
     let urlParams = useParams();
+    const changeImageCategory = (e) => {
+        const url = URL.createObjectURL(e.target.files[0]);
+        setUrlImageCategory(url);
+    }
 
     useEffect(() => {
         if (isUpdate) {
@@ -31,50 +35,45 @@ export default function CategoryFormElement ({isUpdate = false}) {
                 }
             )() 
         }
-        
     },[])
 
     const store = async (data) => {
-        const categoryResponse = await categoryApis.store(data);
+        const formData = new FormData();
+        formData.append('name', data.name);
+        if(data.image) {
+            formData.append('image', data.image[0]);
+        }
+        const categoryResponse = await categoryApis.store(formData);
+        console.log(categoryResponse.data);
 
         if(categoryResponse.success) {
-            navigate('/category')
+            navigate('/admin/category')
             toast.success(() => <p>Thêm mới danh mục <b>{categoryResponse.data.name} thành công</b></p>)
             return;
         }
 
-        if(!categoryResponse.errors.length) {
+        if(categoryResponse.errors) {
             toast.error(() => <p>Thêm mới danh mục thất bại</p>)
             return;
         }
-
-        categoryResponse.errors.forEach((error) => {
-            const [key, value] = Object.entries(error)[0]
-            setError(key, {
-                type: 'server',
-                message: value.message
-            })
-        })
     }
     const update = async (data) => {
-        const categoryResponse = await categoryApis.update(urlParams.categoryId, data)
+        const formData = new FormData();
+        formData.append('name', data.name);
+        if(data.image) {
+            formData.append('image', data.image[0]);
+        }
+        const categoryResponse = await categoryApis.update(urlParams.categoryId, formData)
 
         if(categoryResponse.success) {
             toast.success(() => <p>Chỉnh sửa danh mục <b>{data.name}</b> thành công</p>)
             
             return;
         }
-        if(!categoryResponse.errors.length) {
+        if(categoryResponse.errors) {
             toast.error(() => <p>Chỉnh sửa danh mục thất bại</p>)
             return;
         }
-        categoryResponse.errors.forEach((error) => {
-            const [key, value] = Object.entries(error)[0];
-            setError(key, {
-                type: 'server',
-                message: value.message
-            })
-        })
     }
 
     return (
@@ -99,6 +98,24 @@ export default function CategoryFormElement ({isUpdate = false}) {
                                 })}
                             />
                             {errors.name && <p className="text-danger fw-bold">{errors.name.message}</p>}
+                        </div>
+                        <div className="mb-3">
+                            <img 
+                                src={urlImageCategory}
+                                className="mb-2 img-category" 
+                                alt= 'image'
+                            />
+                            <input
+                                type="file"
+                                className="form-control"
+                                {...register('image', {
+                                    maxLength: {
+                                        value: 100,
+                                        message: 'tên logo không quá 100 ký tự'
+                                    },
+                                    onChange: (e) => changeImageCategory(e)
+                                })}
+                            /> 
                         </div>
                     </div>
 

@@ -3,21 +3,22 @@
     flex-wrap: wrap;
     .product-items {
         flex: 1;
-        height: 250px;
         min-width: 200px;
         max-width: 200px;
 
         .product-item-group {
-            border: #e5e7eb solid 1px;
-            
             .product-img {
                 flex: 1;
-               
+                img {
+                    width: 100%;
+                    height: 190px;
+                }
             }
             .product-description {
                 .product-name {
                     font-size: 14px;
                     overflow-wrap: break-word;
+                    height: 42px;
                     overflow: hidden;
                 }
                 .product-discount span{
@@ -29,7 +30,6 @@
                     .price {
                         font-size: 16px;
                         color: #ee4d2d;
-
                         span {
                             font-size: 12px;
                         }
@@ -47,6 +47,11 @@
                 padding: 4px 8px;
             }
         }
-        
     }
+}
+.div-items {
+    border: 1px solid #e5e7eb;
+}
+.div-items:hover{
+    border: #ee4d2d solid 1px;
 }
