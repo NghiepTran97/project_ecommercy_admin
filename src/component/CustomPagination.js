@@ -43,7 +43,7 @@ const CustomPagination = function (
 
                 if (pageNumber === PAGINATION.ellipsisPostion) {
                     result.push(
-                        <Pagination.Ellipsis />
+                        <Pagination.Ellipsis/>
                     )
                 }
             }

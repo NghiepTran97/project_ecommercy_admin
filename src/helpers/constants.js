@@ -22,3 +22,8 @@ export const ProductPagination = {
     limit: 40,
     page: 1,
 }
+
+export const PRODUCT = {
+    images: 0,
+    video: 1,
+}

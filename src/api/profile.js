@@ -12,13 +12,7 @@ const profileApi = {
         return adminAxios.put(baseRoute + 'update', data,{
             headers: getHeaderWithAuthorizationBearerToken()
         });
-    },
-    changePassword: (data) => {
-        return adminAxios.put(baseRoute + 'confirm-account/change-password', data, {
-            headers: getHeaderWithAuthorizationBearerToken()
-        });
-    },
-    
+    },  
 }
 
 export default profileApi;

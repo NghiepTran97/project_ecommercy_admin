@@ -26,7 +26,6 @@ export default function ProductFormElement ({isUpdateProduct = false}) {
             brand_id: '',
             category_id: '',
             classifies: [],
-            video: null,
         }
     });
     let navigate = useNavigate();
@@ -45,8 +44,8 @@ export default function ProductFormElement ({isUpdateProduct = false}) {
                         setValue('category_id', productsResponse.data.category_id);
                         setValue('brand_id', productsResponse.data.brand_id);
                         setValue('description', productsResponse.data.description);
-                        setUrlImageProduct('images', productsResponse.data.images);
-                        setUrlVideoProduct('video', productsResponse.data.video);
+                        setUrlImageProduct(productsResponse.data.productMedia[0].url);
+                        setUrlVideoProduct(productsResponse.data.productMedia[0].url);
                         setValue('classifies[0][name]', 'size');
                         setValue('classifies[0][description]', 'kích thước');
                         setValue('classifies[0][classify_values][0][value]', productsResponse.data.size);
@@ -54,6 +53,7 @@ export default function ProductFormElement ({isUpdateProduct = false}) {
                         setValue('classifies[1][description]', 'Màu sắc');
                         setValue('classifies[1][classify_values][0][value]', productsResponse.data.color);
                     }
+                    console.log(productsResponse.data.images);
                 }
             )()
         }

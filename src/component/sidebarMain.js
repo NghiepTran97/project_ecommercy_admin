@@ -74,7 +74,7 @@ export default function SidebarMain() {
                                 </div>
                                 <div className="form-control mt-2">
                                     <NavLink
-                                        to = {'users/create'}
+                                        to = {'admin/users/create'}
                                         className={"nav-link"}
                                     >
                                         <div className="nav d-flex align-items-center">

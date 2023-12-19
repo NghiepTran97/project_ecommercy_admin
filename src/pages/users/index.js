@@ -11,6 +11,7 @@ import withReactContent from "sweetalert2-react-content";
 import { toast } from "react-toastify";
 import HeaderNavbar from "../../component/headerNavbar";
 import ContentHeader from "../../component/contentHeader";
+import {Pagination} from "react-bootstrap";
 
 const userIndexSwal = withReactContent(Swal);
 export default function UserIndex() {
@@ -36,7 +37,7 @@ export default function UserIndex() {
                     }
                 }
                 const usersResponse = await userApis.index(data, page);
-                
+                console.log(usersResponse.data.totalPage);
                 if (usersResponse.success) {  
                     setUsers(usersResponse.data);
                 }
@@ -113,7 +114,7 @@ export default function UserIndex() {
                 </table>
                 <CustomPagination
                     page={users.page}
-                    pages={users.pages}
+                    pages={users.totalPage}
                     onPageChange={page => getUsers(getValue(), page)}
                 />
             </div>
